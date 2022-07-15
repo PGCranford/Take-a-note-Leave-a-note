@@ -32,9 +32,16 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.post('/api/notes', (req, res) => {
-res.json(req.body);
+    res.json(req.body);
 
 })
+
+
+
+// posible to link html
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, './public/index.html'));
+// });
 
 //use local server
 app.listen(3001, () => {
@@ -45,4 +52,4 @@ app.listen(3001, () => {
 // const htmlRoutes = require('./public')
 
 // Middleware 
-// app.use(express.static('public'));
+app.use(express.static('public'));
