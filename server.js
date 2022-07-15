@@ -4,7 +4,7 @@ const { notes } = require('./data/notes.json');
 
 const fs = require('fs');
 const path = require('path');
-
+const PORT = process.env.PORT || 3001;
 //initiate the server 
 const app = express();
 
@@ -43,9 +43,9 @@ app.post('/api/notes', (req, res) => {
 //   res.sendFile(path.join(__dirname, './public/index.html'));
 // });
 
-//use local server
-app.listen(3001, () => {
-    console.log(`API server now on port 3001!`);
+//use local or heroku server
+app.listen(PORT, () => {
+    console.log(`API server now on port ${PORTT}!`);
 });
 //API routes 
 // const apiRoutes = require('./routes/apiRoutes/notes')
