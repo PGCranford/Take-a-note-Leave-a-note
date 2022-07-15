@@ -1,1 +1,1 @@
-# Note Taker Starter Code
+# Take a Note, Leave a Note
