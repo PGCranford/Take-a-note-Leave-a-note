@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/PGCranford/Take-a-note-Leave-a-note/issues"
   },
-  "homepage": "https://github.com/PGCranford/Take-a-note-Leave-a-note#readme"
+  "homepage": "https://github.com/PGCranford/Take-a-note-Leave-a-note#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
