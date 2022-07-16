@@ -13,18 +13,7 @@ router.get('/notes', (req, res) => {
 
 });
 
-// function to create new note 
-// function createNewNote(body, notesArray) {
-//     notes = body;
-//     notesArray.push(notes);
-
-//     fs.writeFileSync(
-//         path.join(__dirname, '../data/notes.json'),
-//         JSON.stringify({ animals: notesArray }, null, 2)
-//     );
-//     return notes;
-// };
-
+//post user submitted notes to notes 
 router.post('/notes', (req, res) => {
     //add new note to notes
     const notes = JSON.parse(fs.readFileSync('./data/notes.json'));
@@ -38,6 +27,20 @@ router.post('/notes', (req, res) => {
 
     fs.writeFileSync(
         './data/notes.json', JSON.stringify(notes))
+
+});
+
+router.delete('/notes', (req, res) => {
+    notes = JSON.parse(fs.readFileSync('./data/notes.json'));
+    notes.delete({
+        title: req.body.title,
+        text: req.body.text,
+        id: notes.length,
+
+    });
+
+    res.send(results)
+
 
 });
 

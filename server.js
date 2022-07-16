@@ -14,8 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
+//linking routes to server 
 app.use('/api', apiRoutes);
-
 app.use('/', htmlRoutes);
 
 //use local or heroku server
