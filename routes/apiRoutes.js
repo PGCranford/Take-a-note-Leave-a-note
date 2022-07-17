@@ -16,32 +16,35 @@ router.get('/notes', (req, res) => {
 //post user submitted notes to notes 
 router.post('/notes', (req, res) => {
     //add new note to notes
-    const notes = JSON.parse(fs.readFileSync('./data/notes.json'));
-    res.json(notes);
+    let notes = JSON.parse(fs.readFileSync('./data/notes.json'));
     notes.push({
         title: req.body.title,
         text: req.body.text,
-        id: notes.length,
+        id: `${notes.length}`,
 
     });
 
     fs.writeFileSync(
         './data/notes.json', JSON.stringify(notes))
+    res.json(notes);
 
 });
 
-router.delete('/notes', (req, res) => {
-    notes = JSON.parse(fs.readFileSync('./data/notes.json'));
-    notes.delete({
-        title: req.body.title,
-        text: req.body.text,
-        id: notes.length,
+// delete note function
+router.delete('/notes/:id', (req, res) => {
 
-    });
+    let notes = JSON.parse(fs.readFileSync('./data/notes.json'));
+    const notesIndex = notes.findIndex((note) => note.id === req.params.id)
+    if (notesIndex === -1) return res.status(404).json({})
 
-    res.send(results)
+    notes.splice(notesIndex, 1)
+    fs.writeFileSync(
+        './data/notes.json', JSON.stringify(notes))
 
+    res.json(notes)
 
 });
+
+
 
 module.exports = router;
